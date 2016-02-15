@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit colors="true" bootstrap="tests/bootstrap.php">
+    <php>
+        <env name="TEST_API_TOKEN" value=""/>
+        <env name="TEST_PROXY_HOST" value=""/>
+        <env name="TEST_PROXY_PORT" value=""/>
+    </php>
     <testsuites>
         <testsuite name="Mataharimall PHP SDK Test Suite">
             <directory>./tests/</directory>
