@@ -7,15 +7,24 @@ class MMRequest
     private $MMcurl;
     private $rawResponse;
     private $HttpCode;
+    private $curlOptions;
+    private $proxy = [];
 
     /**
      *
      * Constructor
      *
      */
-    public function __construct(Curl $MMcurl = null)
+    public function __construct(array $options = [], Curl $MMcurl = null)
     {
         $this->MMcurl = $MMcurl ?: new Curl();
+        if (!empty($options)) {
+            $this->proxy = array_merge([
+                'CURLOPT_PROXY' => '',
+                'CURLOPT_PROXYUSERPWD' => '',
+                'CURLOPT_PROXYPORT' => '',
+            ], $options);
+        }
     }
 
     /**
@@ -60,8 +69,28 @@ class MMRequest
             $options[CURLOPT_POSTFIELDS] = json_encode($body);
         }
 
+        if (!empty($this->proxy)) {
+            $options[CURLOPT_PROXY] = $this->proxy['CURLOPT_PROXY'];
+            $options[CURLOPT_PROXYUSERPWD] = $this->proxy['CURLOPT_PROXYUSERPWD'];
+            $options[CURLOPT_PROXYPORT] = $this->proxy['CURLOPT_PROXYPORT'];
+            $options[CURLOPT_PROXYAUTH] = CURLAUTH_BASIC;
+            $options[CURLOPT_PROXYTYPE] = CURLPROXY_HTTP;
+        }
+
         $this->MMcurl->init();
+        $this->setCurlOptions($options);
         $this->MMcurl->setOptArray($options);
+    }
+
+
+    public function setCurlOptions($options)
+    {
+        $this->curlOptions = $options;
+    }
+
+    public function getCurlOptions()
+    {
+        return $this->curlOptions;
     }
 
     public function getHttpCode()
