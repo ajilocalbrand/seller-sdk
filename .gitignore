@@ -1,3 +1,6 @@
+#FILE
+phpunit.xml
+
 # EXTENSIONS
 *.swp
 *.DS_Store
