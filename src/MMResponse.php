@@ -3,26 +3,9 @@ namespace Mataharimall;
 
 class MMResponse
 {
-    private $apiPath;
     private $httpCode = 0;
     private $headers = [];
     private $body = [];
-
-    /**
-     * @param string $apiPath
-     */
-    public function setApiPath($apiPath)
-    {
-        $this->apiPath = $apiPath;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getApiPath()
-    {
-        return $this->apiPath;
-    }
 
     /**
      * @param array|object $body

@@ -19,11 +19,11 @@ class API extends MMConfig
      *
      * @param string    $apiToken   API Seller Token
      */
-    public function __construct($apiToken = null)
+    public function __construct($apiToken = null, MMRequest $request = null, MMResponse $response = null)
     {
         $this->setEnv();
-        $this->response = new MMResponse();
-        $this->request = new MMRequest();
+        $this->request = $request ?: new MMRequest();
+        $this->response = $response ?: new MMResponse();
 
         if (!empty($apiToken)) {
             $this->bearer = $apiToken;
