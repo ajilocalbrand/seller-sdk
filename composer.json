@@ -1,0 +1,22 @@
+{
+    "name": "mataharimall/php-sdk",
+    "description": "PHP SDK for Seller Center API.",
+    "authors": [
+        {
+            "name": "dimboy",
+            "email": "dimas.abdulaziiz@mataharimall.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "ext-curl": "*"
+    },
+    "require-dev" : {
+        "phpunit/phpunit": "4.8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mataharimall\\": "src"
+        }
+    }
+}
