@@ -26,17 +26,18 @@ Check **[API Seller Apiary](http://docs.apiforseller.apiary.io/)**, for availabl
 ### Basic Usage ###
 
 ```sh
-$mataharimall = new API(API_TOKEN);
+$mataharimall = new Mataharimall(API_TOKEN);
 $results = $mataharimall->post($url , $parameter);
 ```
 ### Proxy Enabled ###
 ```sh
-$request = new MMRequest([
+$request = new MMRequest();
+$request->setProxy([
      'CURLOPT_PROXY' => PROXY_HOST,
      'CURLOPT_PROXYUSERPWD' => PROXY_USERPWD,
      'CURLOPT_PROXYPORT' => PROXY_PORT,
 ]);
-$mataharimall = new API(API_TOKEN, $request);
+$mataharimall = new Mataharimall(API_TOKEN, $request);
 $results = $mataharimall->post($url , $parameter);
 ```
 
