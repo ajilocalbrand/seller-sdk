@@ -14,6 +14,7 @@ class MataharimallApiTest extends \PHPUnit_Framework_TestCase
     {
         $this->MM = new Mataharimall(API_TOKEN);
         //test POST API
+        $this->MM->setDecodeAsArray(true);
         $this->result = $this->MM->post('master/brands', [
             'page' => 1,
             'limit' => 5,
@@ -22,18 +23,18 @@ class MataharimallApiTest extends \PHPUnit_Framework_TestCase
 
     public function testGetLastHttpCode()
     {
-        $this->assertEquals(200, $this->MM->getLastHttpCode());
+        $this->assertEquals(200, $this->MM->getResponseCode());
     }
 
     public function testGetLastHeaders()
     {
-        $headers = $this->MM->getLastHeaders();
+        $headers = $this->MM->getResponseHeaders();
         $this->assertInternalType('array', $headers);
     }
 
     public function testGetLastBody()
     {
-        $body = $this->MM->getLastBody();
+        $body = $this->MM->getResponseBody();
         $this->assertArrayHasKey('code', $body);
         $this->assertArrayHasKey('results', $body);
         foreach ($body as $key => $value) {
