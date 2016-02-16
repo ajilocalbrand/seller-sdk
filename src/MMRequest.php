@@ -6,7 +6,7 @@ class MMRequest
 {
     private $MMcurl;
     private $rawResponse;
-    private $HttpCode;
+    private $HttpCode = 0;
     private $curlOptions;
     private $proxy = [];
 

@@ -33,7 +33,7 @@ class Mataharimall extends MMConfig
     /**
      * @return headers
      */
-    public function getLastHeaders()
+    public function getResponseHeaders()
     {
         return $this->response->getHeaders();
     }
@@ -41,7 +41,7 @@ class Mataharimall extends MMConfig
     /**
      * @return headers
      */
-    public function getLastBody()
+    public function getResponseBody()
     {
         return $this->response->getBody();
     }
@@ -49,7 +49,7 @@ class Mataharimall extends MMConfig
     /**
      * @return int
      */
-    public function getLastHttpCode()
+    public function getResponseCode()
     {
         return $this->response->getHttpCode();
     }
