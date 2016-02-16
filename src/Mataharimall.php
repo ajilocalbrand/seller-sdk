@@ -92,8 +92,8 @@ class Mataharimall extends MMConfig
 
         $this->response->setHttpCode($this->request->getHttpCode());
         $this->response->setHeaders($responseHeaders);
-        $this->response->setBody(Decoder::json($responseBody, true));
-        return $responseBody;
+        $this->response->setBody(Decoder::json($responseBody, $this->decodeAsArray));
+        return;
     }
 
     private function extractResponse($results)

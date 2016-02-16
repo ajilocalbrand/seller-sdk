@@ -1,4 +1,5 @@
 <?php
+
 namespace Mataharimall;
 
 class MMConfig
@@ -7,6 +8,7 @@ class MMConfig
     protected $defaultEnv = 'sandbox';
     protected $timeout = 5;
     protected $connectionTimeout = 5;
+    protected $decodeAsArray = false;
 
     /**
      * Set environment (sandbox|prod).
@@ -27,6 +29,11 @@ class MMConfig
     public function getConfig()
     {
         return $this->config;
+    }
+
+    public function setDecodeAsArray($value)
+    {
+        $this->decodeAsArray = (bool)$value;
     }
 
     /**

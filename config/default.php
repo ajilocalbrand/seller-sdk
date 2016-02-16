@@ -5,6 +5,6 @@ return [
         'host' => 'http://localhost:3000',
     ],
     'prod' => [
-        'host' => 'http://api.sb.mataharimall.com',
+        'host' => 'https://api.seller.mataharimall.com',
     ],
 ];
