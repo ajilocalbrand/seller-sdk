@@ -15,16 +15,9 @@ class MMRequest
      * Constructor
      *
      */
-    public function __construct(array $options = [], Curl $MMcurl = null)
+    public function __construct(Curl $MMcurl = null)
     {
         $this->MMcurl = $MMcurl ?: new Curl();
-        if (!empty($options)) {
-            $this->proxy = array_merge([
-                'CURLOPT_PROXY' => '',
-                'CURLOPT_PROXYUSERPWD' => '',
-                'CURLOPT_PROXYPORT' => '',
-            ], $options);
-        }
     }
 
     /**
@@ -82,6 +75,16 @@ class MMRequest
         $this->MMcurl->setOptArray($options);
     }
 
+    public function setProxy(array $proxy)
+    {
+        if (!empty($proxy)) {
+            $this->proxy = array_merge([
+                'CURLOPT_PROXY' => '',
+                'CURLOPT_PROXYUSERPWD' => '',
+                'CURLOPT_PROXYPORT' => '',
+            ], $proxy);
+        }
+    }
 
     public function setCurlOptions($options)
     {

@@ -7,7 +7,6 @@ class MMConfig
     protected $defaultEnv = 'sandbox';
     protected $timeout = 5;
     protected $connectionTimeout = 5;
-    protected $proxy = [];
 
     /**
      * Set environment (sandbox|prod).
@@ -25,6 +24,11 @@ class MMConfig
         }
     }
 
+    public function getConfig()
+    {
+        return $this->config;
+    }
+
     /**
      * Set the connection and response timeouts.
      *
@@ -35,13 +39,5 @@ class MMConfig
     {
         $this->connectionTimeout = (int)$connectionTimeout;
         $this->timeout = (int)$timeout;
-    }
-
-    /**
-     * @param array $proxy
-     */
-    public function setProxy(array $proxy)
-    {
-        $this->proxy = $proxy;
     }
 }

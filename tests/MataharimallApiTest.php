@@ -2,7 +2,7 @@
 
 namespace Mataharimall;
 
-use Mataharimall\API;
+use Mataharimall\Mataharimall;
 use Mataharimall\MMRequest;
 
 class MataharimallApiTest extends \PHPUnit_Framework_TestCase
@@ -12,7 +12,7 @@ class MataharimallApiTest extends \PHPUnit_Framework_TestCase
 
     protected function setup()
     {
-        $this->MM = new API(API_TOKEN);
+        $this->MM = new Mataharimall(API_TOKEN);
         //test POST API
         $this->result = $this->MM->post('master/brands', [
             'page' => 1,
@@ -47,7 +47,7 @@ class MataharimallApiTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('Mataharimall\MMException');
         try {
-            $this->MM = new API();
+            $this->MM = new Mataharimall();
             $this->result = $this->MM->post('master/colors', []);
          } catch (Mataharimall\MMException $e) {
              $this->assertContains('Invalid API token.', $e->getMessage());
@@ -57,16 +57,22 @@ class MataharimallApiTest extends \PHPUnit_Framework_TestCase
 
     public function testCurlProxy()
     {
-        $request = new MMRequest([
+        $request = new MMRequest();
+        $request->setProxy([
             'CURLOPT_PROXY' => PROXY_HOST,
             'CURLOPT_PROXYPORT' => PROXY_PORT,
         ]);
-        $this->MM = new API(API_TOKEN, $request);
+        $this->MM = new Mataharimall(API_TOKEN, $request);
         $result = $this->MM->post('master/colors', []);
         $fields = $request->getCurlOptions();
         $this->assertEquals($fields[CURLOPT_PROXY], PROXY_HOST);
-
     }
 
+    public function testSwitchEnviroment()
+    {
+        $this->MM->setEnv('prod');
+        $config = $this->MM->getConfig();
+        $this->assertEquals($config['host'], PROD_HOST);
+    }
 
 }

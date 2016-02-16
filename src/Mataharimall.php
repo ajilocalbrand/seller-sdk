@@ -8,7 +8,7 @@ namespace Mataharimall;
  *
  */
 use Mataharimall\Helpers\Decoder;
-class API extends MMConfig
+class Mataharimall extends MMConfig
 {
     private $response;
     private $request;
