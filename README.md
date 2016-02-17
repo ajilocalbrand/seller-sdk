@@ -27,7 +27,17 @@ Check **[API Seller Apiary](http://docs.apiforseller.apiary.io/)**, for availabl
 
 ```sh
 $mataharimall = new Mataharimall(API_TOKEN);
-$results = $mataharimall->post($url , $parameter);
+$mataharimall->post($url , $parameter);
+
+//get headers
+$headers = $mataharimall->getResponseHeaders();
+
+//get response Http Code
+$httpCode = $mataharimall->getResponseCode();
+
+//get body
+$body = $mataharimall->getResponseBody();
+
 ```
 ### Proxy Enabled ###
 ```sh
@@ -44,8 +54,15 @@ $results = $mataharimall->post($url , $parameter);
 ### Error Handling ###
 
 ```sh
-$results = $mataharimall->post($url, $parameter);
-if ($mataharimall->getLastHttpCode() == 200) {
+try {
+    $mataharimall = new Mataharimall(API_TOKEN);
+    $mataharimall->post($url, $parameter);
+} catch (MMException $e) {
+    // print exception.
+}
+
+$result = $mataharimall->getResponseBody();
+if ($mataharimall->getResponseCode() == 200 && !empty($result)) {
     // success
 } else {
     // error
