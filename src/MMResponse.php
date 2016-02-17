@@ -52,6 +52,9 @@ class MMResponse
         $this->headers = $headers;
     }
 
+    /**
+     * @return headers
+     */
     public function getHeaders()
     {
         return $this->headers;

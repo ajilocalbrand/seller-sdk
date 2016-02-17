@@ -39,7 +39,7 @@ class Mataharimall extends MMConfig
     }
 
     /**
-     * @return headers
+     * @return body
      */
     public function getResponseBody()
     {
@@ -96,6 +96,12 @@ class Mataharimall extends MMConfig
         return;
     }
 
+    /**
+     * Extract Raw data
+     * @param string $results
+     *
+     * @return array
+     */
     private function extractResponse($results)
     {
         return explode("\r\n\r\n", $results);

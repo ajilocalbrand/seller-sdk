@@ -7,12 +7,12 @@ class MMRequest
     private $MMcurl;
     private $rawResponse;
     private $HttpCode = 0;
-    private $curlOptions;
     private $proxy = [];
 
     /**
      *
      * Constructor
+     * @param Curl $MMcurl
      *
      */
     public function __construct(Curl $MMcurl = null)
@@ -25,8 +25,9 @@ class MMRequest
      *
      * @param string $url
      * @param string $method
-     * @param string $authorization
-     * @param array $fields
+     * @param string $body
+     * @param string $headers
+     * @param array $timeout
      *
      * @return string
      * @throws MMException
@@ -43,6 +44,37 @@ class MMRequest
         $this->HttpCode = $this->MMcurl->getinfo(CURLINFO_HTTP_CODE);
         $this->closeConnection();
         return $this->rawResponse;
+    }
+
+    /**
+     * get Request Http code
+     *
+     * @return int
+     *
+     */
+    public function getHttpCode()
+    {
+        return $this->HttpCode;
+    }
+
+    /**
+     * set Curl Proxy
+     *
+     * array['CURLOPT_PROXY'] string
+     * array['CURLOPT_PROXYPORT'] string
+     * array['CURLOPT_PROXYUSERPWD'] string
+     * @param array $proxy (see above)
+     *
+     */
+    public function setProxy(array $proxy)
+    {
+        if (!empty($proxy)) {
+            $this->proxy = array_merge([
+                'CURLOPT_PROXY' => '',
+                'CURLOPT_PROXYUSERPWD' => '',
+                'CURLOPT_PROXYPORT' => '',
+            ], $proxy);
+        }
     }
 
     protected function openConnection($url, $method, array $body, $headers, $timeout)
@@ -71,35 +103,9 @@ class MMRequest
         }
 
         $this->MMcurl->init();
-        $this->setCurlOptions($options);
         $this->MMcurl->setOptArray($options);
     }
 
-    public function setProxy(array $proxy)
-    {
-        if (!empty($proxy)) {
-            $this->proxy = array_merge([
-                'CURLOPT_PROXY' => '',
-                'CURLOPT_PROXYUSERPWD' => '',
-                'CURLOPT_PROXYPORT' => '',
-            ], $proxy);
-        }
-    }
-
-    public function setCurlOptions($options)
-    {
-        $this->curlOptions = $options;
-    }
-
-    public function getCurlOptions()
-    {
-        return $this->curlOptions;
-    }
-
-    public function getHttpCode()
-    {
-        return $this->HttpCode;
-    }
 
     protected function closeConnection()
     {

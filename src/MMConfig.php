@@ -7,7 +7,6 @@ class MMConfig
     protected $config;
     protected $defaultEnv = 'sandbox';
     protected $timeout = 5;
-    protected $connectionTimeout = 5;
     protected $decodeAsArray = false;
 
     /**
@@ -26,11 +25,20 @@ class MMConfig
         }
     }
 
+    /**
+     *
+     * @return config
+     */
     public function getConfig()
     {
         return $this->config;
     }
 
+    /**
+     * Set response as array.
+     *
+     * @param bool
+     */
     public function setDecodeAsArray($value)
     {
         $this->decodeAsArray = (bool)$value;
@@ -39,12 +47,10 @@ class MMConfig
     /**
      * Set the connection and response timeouts.
      *
-     * @param int $connectionTimeout
      * @param int $timeout
      */
-    public function setTimeout($connectionTimeout, $timeout)
+    public function setTimeout($timeout)
     {
-        $this->connectionTimeout = (int)$connectionTimeout;
         $this->timeout = (int)$timeout;
     }
 }
