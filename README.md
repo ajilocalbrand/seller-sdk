@@ -1,4 +1,4 @@
-# Mataharimall PHP SDK #
+# Mataharimall Seller SDK #
 
 this is the PHP wrapper for Mataharimall Seller Center API.
 
