@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    colors="true"
+    bootstrap="tests/bootstrap.php"
+    stopOnFailure="false"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+>
+    <php>
+        <env name="TEST_API_TOKEN" value=""/>
+        <env name="TEST_PROXY_HOST" value=""/>
+        <env name="TEST_PROXY_PORT" value=""/>
+        <env name="TEST_ENVIROMENT_HOST" value=""/>
+    </php>
+    <testsuites>
+        <testsuite name="Mataharimall PHP SDK Test Suite">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

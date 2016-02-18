@@ -1,0 +1,11 @@
+#FILE
+phpunit.xml
+
+# EXTENSIONS
+*.swp
+*.DS_Store
+
+# DIRECTORY
+composer.lock
+vendor
+tests/env
