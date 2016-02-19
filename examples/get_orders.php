@@ -9,8 +9,8 @@ $MM = new Mataharimall\Mataharimall('<your-api-token>');
 $parameter = [
   "start_date" => "2015-10-01",
   "end_date" => "2015-10-02",
-  "page" => 1,
-  "limit" => 20,
+  "page" => "1",
+  "limit" => "20",
   "sortby" => "id",
   "order" => "desc"
 ];
