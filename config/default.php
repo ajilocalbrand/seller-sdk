@@ -2,7 +2,7 @@
 
 return [
     'sandbox' => [
-        'host' => 'http://localhost:3000',
+        'host' => 'http://api.sb.mataharimall.com',
     ],
     'prod' => [
         'host' => 'https://api.seller.mataharimall.com',
