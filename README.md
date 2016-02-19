@@ -16,7 +16,7 @@ download latest release & require 'autoload.php'.
 ```sh
 require "mataharimall-php-sdk/autoload.php";
 
-use Mataharimall\API;
+use Mataharimall\Mataharimall;
 ```
 
 ## How to ##

@@ -7,7 +7,7 @@ require_once(dirname(__FILE__) . '/../autoload.php');
 
 $MM = new Mataharimall\Mataharimall('<your-api-token>');
 $parameter = [
-    'category_id' => 5,
+    'category_id' => '5',
 ];
 
 try {
