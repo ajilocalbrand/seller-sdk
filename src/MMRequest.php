@@ -2,6 +2,7 @@
 namespace Mataharimall;
 
 use Mataharimall\Helpers\Curl;
+
 class MMRequest
 {
     private $MMcurl;
@@ -25,14 +26,14 @@ class MMRequest
      *
      * @param string $url
      * @param string $method
-     * @param string $body
-     * @param string $headers
-     * @param array $timeout
+     * @param array $body
+     * @param array $headers
+     * @param int $timeout
      *
      * @return string
      * @throws MMException
      */
-    public function send($url, $method, $body, $headers, $timeout)
+    public function send($url, $method, array $body, array $headers, $timeout)
     {
         $this->openConnection($url, $method, $body, $headers, $timeout);
         $this->sendRequest();
@@ -77,7 +78,7 @@ class MMRequest
         }
     }
 
-    protected function openConnection($url, $method, array $body, $headers, $timeout)
+    protected function openConnection($url, $method, array $body, array $headers, $timeout)
     {
         $options = [
             CURLOPT_CONNECTTIMEOUT => $timeout,
@@ -117,7 +118,7 @@ class MMRequest
         $this->rawResponse = $this->MMcurl->exec();
     }
 
-    protected function compileHeaders($rawHeaders)
+    protected function compileHeaders(array $rawHeaders)
     {
         $headers = [];
 

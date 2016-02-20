@@ -53,7 +53,7 @@ class MMResponse
     }
 
     /**
-     * @return headers
+     * @return array headers
      */
     public function getHeaders()
     {

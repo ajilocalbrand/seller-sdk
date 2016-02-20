@@ -1,12 +1,14 @@
 <?php
 
-namespace Mataharimall;
+namespace Mataharimall\Test;
 
 use Mataharimall\Mataharimall;
 use Mataharimall\MMRequest;
+use Mataharimall\MMException;
 
 class MataharimallApiTest extends \PHPUnit_Framework_TestCase
 {
+    /** @var Mataharimall */
     protected $MM;
     protected $result;
 
@@ -50,7 +52,7 @@ class MataharimallApiTest extends \PHPUnit_Framework_TestCase
         try {
             $this->MM = new Mataharimall();
             $this->result = $this->MM->post('master/colors', []);
-         } catch (Mataharimall\MMException $e) {
+         } catch (MMException $e) {
              $this->assertContains('Invalid API token.', $e->getMessage());
              throw $e;
          }
