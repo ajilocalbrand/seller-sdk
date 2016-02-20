@@ -17,7 +17,9 @@ class Mataharimall extends MMConfig
     /**
      * Constructor
      *
-     * @param string    $apiToken   API Seller Token
+     * @param string     $apiToken   API Seller Token
+     * @param MMRequest  $request
+     * @param MMResponse $response
      */
     public function __construct($apiToken = null, MMRequest $request = null, MMResponse $response = null)
     {
@@ -31,7 +33,7 @@ class Mataharimall extends MMConfig
     }
 
     /**
-     * @return headers
+     * @return array headers
      */
     public function getResponseHeaders()
     {
@@ -39,7 +41,7 @@ class Mataharimall extends MMConfig
     }
 
     /**
-     * @return body
+     * @return array|object|string body
      */
     public function getResponseBody()
     {
@@ -71,7 +73,9 @@ class Mataharimall extends MMConfig
      * @param string $method
      * @param string $host
      * @param string $path
-     * @param array  $parameters
+     * @param array  $body
+     *
+     * @throws MMException
      *
      * @return array|object
      */
@@ -106,5 +110,4 @@ class Mataharimall extends MMConfig
     {
         return explode("\r\n\r\n", $results);
     }
-
 }
