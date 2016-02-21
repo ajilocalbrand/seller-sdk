@@ -27,7 +27,7 @@ class MMConfig
 
     /**
      *
-     * @return config
+     * @return array config
      */
     public function getConfig()
     {
