@@ -21,11 +21,11 @@ class Mataharimall extends MMConfig
      * @param MMRequest  $request
      * @param MMResponse $response
      */
-    public function __construct($apiToken = null, MMRequest $request = null, MMResponse $response = null)
+    public function __construct($apiToken = null, $env = "sandbox", MMRequest $request = null)
     {
-        $this->setEnv();
-        $this->request = $request ?: new MMRequest();
-        $this->response = $response ?: new MMResponse();
+        $this->setEnv($env);
+        $this->request = new MMRequest();
+        $this->response = new MMResponse();
 
         if (!empty($apiToken)) {
             $this->bearer = $apiToken;

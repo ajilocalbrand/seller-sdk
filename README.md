@@ -1,6 +1,6 @@
 # Mataharimall Seller SDK #
 
-this is the PHP wrapper for Mataharimall Seller Center API.
+PHP wrapper for Mataharimall Seller Center API.
 
 ## Installation ##
 
@@ -26,7 +26,7 @@ Check **[API Seller Apiary](http://docs.apiforseller.apiary.io/)**, for availabl
 ### Basic Usage ###
 
 ```sh
-$mataharimall = new Mataharimall(API_TOKEN);
+$mataharimall = new Mataharimall(API_TOKEN, ENV);
 $mataharimall->post($url , $parameter);
 
 //get headers
@@ -47,7 +47,7 @@ $request->setProxy([
      'CURLOPT_PROXYUSERPWD' => PROXY_USERPWD,
      'CURLOPT_PROXYPORT' => PROXY_PORT,
 ]);
-$mataharimall = new Mataharimall(API_TOKEN, $request);
+$mataharimall = new Mataharimall(API_TOKEN, ENV, $request);
 $results = $mataharimall->post($url , $parameter);
 ```
 
@@ -55,7 +55,7 @@ $results = $mataharimall->post($url , $parameter);
 
 ```sh
 try {
-    $mataharimall = new Mataharimall(API_TOKEN);
+    $mataharimall = new Mataharimall(API_TOKEN, ENV);
     $mataharimall->post($url, $parameter);
 } catch (MMException $e) {
     // print exception.

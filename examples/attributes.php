@@ -5,7 +5,7 @@
 // if you code without using Composer, you can use "autoload.php" library.
 require_once(dirname(__FILE__) . '/../autoload.php');
 
-$MM = new Mataharimall\Mataharimall('<your-api-token>');
+$MM = new Mataharimall\Mataharimall('<your-api-token>', 'sandbox');
 $parameter = [
     'category_id' => '5',
 ];
@@ -34,4 +34,15 @@ if ($MM->getResponseCode() == 200 && !empty($response)) {
         }
         echo "===============================" ."\n";
     }
+}else{
+    print_r($response);
+    /**
+     * output for unauthorized:
+     * stdClass Object
+        (
+            [code] => 401
+            [errorMessage] => Unauthorized
+            [requestId] => 55107703-adf5-33d5-854f-f079d076f2b2
+        )
+     */
 }

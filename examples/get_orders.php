@@ -5,10 +5,10 @@
 // if you code without using Composer, you can use "autoload.php" library.
 require_once(dirname(__FILE__) . '/../autoload.php');
 
-$MM = new Mataharimall\Mataharimall('<your-api-token>');
+$MM = new Mataharimall\Mataharimall('<your-api-token>', 'sandbox');
 $parameter = [
   "start_date" => "2015-10-01",
-  "end_date" => "2015-10-02",
+  "end_date" => "2016-02-28",
   "page" => "1",
   "limit" => "20",
   "sortby" => "id",
@@ -34,6 +34,17 @@ if ($MM->getResponseCode() == 200 && !empty($response)) {
     echo sprintf("total row(s) of %s\nPage %s from %s.",
         $page['rows'], $page['page'], $page['totalpage']
     );
+}else{
+    print_r($response);
+    /**
+     * output for unauthorized:
+     * stdClass Object
+        (
+            [code] => 401
+            [errorMessage] => Unauthorized
+            [requestId] => 55107703-adf5-33d5-854f-f079d076f2b2
+        )
+     */
 }
 
 function getChildrens($arr)
