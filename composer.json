@@ -1,10 +1,10 @@
 {
     "name": "mataharimall/seller-sdk",
-    "description": "PHP SDK for Seller Center API.",
+    "description": "PHP SDK for Seller Center API",
     "authors": [
         {
-            "name": "dimboy",
-            "email": "dimas.abdulaziiz@mataharimall.com"
+            "name": "Mataharimall",
+            "email": "scfeedback@mataharimall.com"
         }
     ],
     "require": {
