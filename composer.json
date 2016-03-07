@@ -1,6 +1,7 @@
 {
     "name": "mataharimall/seller-sdk",
     "description": "PHP SDK for Seller Center API",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Mataharimall",
