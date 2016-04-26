@@ -94,6 +94,10 @@ class Mataharimall extends MMConfig
         $result = $this->request->send($url, $method, $body, $headers, $this->timeout);
         list($responseHeaders, $responseBody) = $this->extractResponse($result);
 
+        if (strpos($responseHeaders, "HTTP/1.1 100 Continue") !== false) {
+            list($continue, $responseHeaders, $responseBody) = $this->extractResponse($result);
+        }
+
         $this->response->setHttpCode($this->request->getHttpCode());
         $this->response->setHeaders($responseHeaders);
         $this->response->setBody(Decoder::json($responseBody, $this->decodeAsArray));
