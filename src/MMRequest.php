@@ -107,6 +107,10 @@ class MMRequest
         $this->MMcurl->setOptArray($options);
     }
 
+    public function getProxySettings() {
+        return $this->proxy;
+    }
+
 
     protected function closeConnection()
     {
