@@ -18,8 +18,8 @@ class MataharimallApiTest extends \PHPUnit_Framework_TestCase
         //test POST API
         $this->MM->setDecodeAsArray(true);
         $this->result = $this->MM->post('master/brands', [
-            'page' => 1,
-            'limit' => 5,
+            'page' => '1',
+            'limit' => '5',
         ]);
     }
 
@@ -53,7 +53,7 @@ class MataharimallApiTest extends \PHPUnit_Framework_TestCase
             $this->MM = new Mataharimall();
             $this->result = $this->MM->post('master/colors', []);
          } catch (MMException $e) {
-             $this->assertContains('Invalid API token.', $e->getMessage());
+             $this->assertContains('invalid API token.', $e->getMessage());
              throw $e;
          }
     }
@@ -67,8 +67,8 @@ class MataharimallApiTest extends \PHPUnit_Framework_TestCase
         ]);
         $this->MM = new Mataharimall(API_TOKEN, $request);
         $result = $this->MM->post('master/colors', []);
-        $fields = $request->getCurlOptions();
-        $this->assertEquals($fields[CURLOPT_PROXY], PROXY_HOST);
+        $fields = $request->getProxySettings();
+        $this->assertEquals($fields['CURLOPT_PROXY'], PROXY_HOST);
     }
 
     public function testSwitchEnviroment()
